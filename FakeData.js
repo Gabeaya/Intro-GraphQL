@@ -29,7 +29,7 @@ const UserList = [
     age: 21,
     nationality: "Brazil",
     friends: [
-      
+
     ]
   }, 
   {
@@ -46,6 +46,33 @@ const UserList = [
     age: 19,
     nationality: "Pakistan",
   },
-]
+];
 
-module.exports = { UserList};
+const MovieList = [
+  {
+    id: 1,
+    name: "Superbad",
+    release: 2007,
+    twoThumbsUp: true,
+  },
+  {
+    id: 2,
+    name: "Batman",
+    release: 2022,
+    twoThumbsUp: true,
+  },
+  {
+    id: 3,
+    name: "The Dark and The Twisted",
+    release: 2020,
+    twoThumbsUp: false,
+  },
+  {
+    id: 4,
+    name: "Interstellar",
+    release: 2007,
+    twoThumbsUp: true,
+  },
+];
+
+module.exports = { UserList, MovieList};
