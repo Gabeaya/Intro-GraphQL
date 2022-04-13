@@ -21,6 +21,11 @@ const resolvers = {
       const movie = _.find(MovieList, {name});
       return movie;
     }
+  },
+  User: {
+    favoriteMovies: () => {
+      return _.filter(MovieList, (movie) => movie.yearOfPublication <= 2010)
+    }
   }
 };
 module.exports={resolvers};
