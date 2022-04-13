@@ -24,6 +24,17 @@ const typeDefs = gql`
     release: Int!
     twoThumbsUp: Boolean!
   }
+  input CreateUserInput {
+    name: String!
+    username: String!
+    age: Int = 18 
+    nationality: String!
+    friends: [User]
+    favoriteMovies: [Movie]
+  }
+  type Mutation {
+    createUser(user: User!): User!
+  }
   enum Nationality {
     Canada
     Brazil
