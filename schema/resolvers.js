@@ -35,7 +35,18 @@ const resolvers = {
       user.id = lastId + 1;
       UserList.push(user);
       return user;
+    },
+    createUser: (parent, args) => {
+      const {id, newUserName} = args.input
+      UserList.forEach(() => {
+        let userUpdated;
+        if (user.id === id) {
+          user.username = newUsername;
+          userUpdated = user
+        }
+      });
+      return userUpdated
     }
-  }
+  } 
 };
 module.exports={resolvers};
