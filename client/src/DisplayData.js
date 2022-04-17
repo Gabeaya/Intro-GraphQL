@@ -73,7 +73,12 @@ function DisplayData() {
           />
           <button onClick={fetchMovie}> Fetch Movie</button>
           <div>
-
+            {movieSearchData && (
+              <div>
+                {""}
+                <h1>MovieName: {movieSearchData.movie.name} </h1>
+              </div>
+            )}
           </div>
         </div>
     </div>
