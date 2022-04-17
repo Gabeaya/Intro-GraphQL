@@ -22,7 +22,7 @@ const QUERY_ALL_MOVIES = gql`
   }
 `;
 const GET_MOVIE_BY_NAME = gql`
-  query GetMovieByName($name: String!){
+  query Movie($name: String!){
     movie(name: $name){
     name
     }
@@ -30,17 +30,17 @@ const GET_MOVIE_BY_NAME = gql`
   }
 `;
 function DisplayData() {
-  const {movieSearch, setMovieSearched} = useState("");
+  const [movieSearched, setMovieSearched] = useState("");
   const {data, loading, error} = useQuery(QUERY_ALL_USERS);
   const {data: movieData } = useQuery(QUERY_ALL_MOVIES);
   const [fetchMovie, 
-    {data: movieSearchData, error:movieError}, 
+    {data: movieSearchedData, error:movieError}, 
   ] = useLazyQuery(GET_MOVIE_BY_NAME);
   if (loading) {
-    <h1>Data is Loading...</h1>
+    return <h1>Data is Loading...</h1>
   }
   else if (error) {
-    console.log(error);
+    console.log(movieError);
   }
 
   if (data) {
@@ -71,12 +71,18 @@ function DisplayData() {
               setMovieSearched(event.target.value);
             }}
           />
-          <button onClick={fetchMovie}> Fetch Movie</button>
+          <button 
+          onClick={() =>{
+            fetchMovie({
+              variables:{
+              name: movieSearched
+            }})
+          }}> Fetch Movie</button>
           <div>
-            {movieSearchData && (
+            {movieSearchedData && (
               <div>
                 {""}
-                <h1>MovieName: {movieSearchData.movie.name} </h1>
+                <h1>MovieName: {movieSearchedData.movie.name} </h1>
               </div>
             )}
           </div>
