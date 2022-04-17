@@ -46,6 +46,10 @@ function DisplayData() {
   if (data) {
     console.log(data)
   }
+  
+  if (movieError) {
+    console.log(movieError);
+  }
   return (
     <div>
       {data && 
@@ -77,7 +81,9 @@ function DisplayData() {
               variables:{
               name: movieSearched
             }})
-          }}> Fetch Movie</button>
+          }}> 
+            Fetch Movie
+          </button>
           <div>
             {movieSearchedData && (
               <div>
@@ -85,6 +91,7 @@ function DisplayData() {
                 <h1>MovieName: {movieSearchedData.movie.name} </h1>
               </div>
             )}
+            {movieError && <h1> There was an error fetching the data, please check your console for further info</h1>}
           </div>
         </div>
     </div>
